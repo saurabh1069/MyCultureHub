@@ -6,7 +6,10 @@
         mc:Ignorable="d"
         Title="Front-End GUI Presentation App" Height="600" Width="800">
 
+
+    <!-- Define the style in the Window or Application resources -->
     <Window.Resources>
+        <!-- Style for the StackPanel to change cursor on hover -->
         <Style x:Key="HoverableStackPanelStyle" TargetType="StackPanel">
             <Setter Property="Cursor" Value="Arrow"/>
             <!-- Default cursor -->
@@ -17,6 +20,18 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <!-- Animation for sliding image on hover -->
+        <Storyboard x:Key="SlideInAnimation">
+            <DoubleAnimation
+                Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                To="0" Duration="0:0:0.5"/>
+        </Storyboard>
+        <Storyboard x:Key="SlideOutAnimation">
+            <DoubleAnimation
+                Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                To="100" Duration="0:0:0.5"/>
+        </Storyboard>
     </Window.Resources>
 
 
@@ -53,26 +68,32 @@
 
             <!-- Second Column -->
             <StackPanel Grid.Column="1" Margin="5">
-                <Button Background="Transparent" BorderBrush="Transparent" Click="MainStackPanel_Click">
-                    <Border Background="White" CornerRadius="5" Padding="10" Margin="0,0,0,10">
-                        <StackPanel Style="{StaticResource HoverableStackPanelStyle}">
-                            <TextBlock Text="Design a Front-End GUI" FontWeight="Bold"/>
-                            <TextBlock Text="Learn how to design a front-end GUI using WPF." />
-                        </StackPanel>
-                    </Border>
-                </Button>
-                <Button Background="Transparent" BorderBrush="Transparent" Click="EmployeeSpotlights_Click">
-                    <Border Background="White" CornerRadius="5" Padding="10">
-                        <StackPanel Style="{StaticResource HoverableStackPanelStyle}">
-                            <Rectangle Height="100" Fill="LightGoldenrodYellow" RadiusX="10" RadiusY="10"/>
-                            <TextBlock Text="Employee Spotlights" FontWeight="Bold"/>
-                            <TextBlock Text="Highlighting our star employees." />
-                        </StackPanel>
-                    </Border>
-                </Button>
+                <Border Background="White" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+                    <StackPanel Style="{StaticResource HoverableStackPanelStyle}">
+                        <TextBlock Text="Design a Front-End GUI" FontWeight="Bold"/>
+                        <TextBlock Text="Learn how to design a front-end GUI using WPF." />
+
+                        <!-- Image with animation on hover -->
+                        <Image Source="/team_outings_icon.png" Stretch="Uniform"  Margin="5" Height="142" Width="250">
+                            <Image.RenderTransform>
+                                <TranslateTransform X="100"/>
+                            </Image.RenderTransform>
+                            <Image.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard Storyboard="{StaticResource SlideInAnimation}"/>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard Storyboard="{StaticResource SlideOutAnimation}"/>
+                                </EventTrigger>
+                            </Image.Triggers>
+                        </Image>
+                    </StackPanel>
+                </Border>
             </StackPanel>
 
-            <!-- Third Column -->
+            <!-- This is comment -->
+
+                <!-- Third Column -->
             <StackPanel Grid.Column="2" Margin="5">
                 <Border Background="White" CornerRadius="5" Padding="10" Margin="0,0,0,10">
                     <StackPanel>
