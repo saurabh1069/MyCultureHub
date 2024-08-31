@@ -1,0 +1,49 @@
+﻿<Window x:Class="MyCultureHub.AnimatedPromptWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="Animated Prompt" Height="450" Width="600"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        Opacity="0"
+        Loaded="Window_Loaded">
+
+    <Border CornerRadius="10" Background="White" BorderBrush="Black" BorderThickness="2">
+        <Grid>
+            <!-- WebView2 control to display HTML content -->
+            <wv2:WebView2 Name="webView2Control" Margin="10,40,10,10"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
+                <!-- Close Button -->
+                <Grid Width="18" Height="18" Cursor="Hand" Margin="0,0,8,0" MouseLeftButtonDown="CloseButton_Click">
+                    <Ellipse Fill="#FF605C" />
+                    <TextBlock Text="×" FontWeight="ExtraBold" Foreground="Black" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Grid.ToolTip>
+                        <ToolTip Content="Close" Placement="Top" />
+                    </Grid.ToolTip>
+                </Grid>
+
+                <!-- Minimize Button -->
+                <Grid Width="18" Height="18" Cursor="Hand" Margin="0,0,8,0" MouseLeftButtonDown="MinimizeButton_Click">
+                    <Ellipse Fill="#FFBD44" />
+                    <TextBlock Text="−" FontWeight="ExtraBold" Foreground="Black" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Grid.ToolTip>
+                        <ToolTip Content="Minimize" Placement="Top" />
+                    </Grid.ToolTip>
+                </Grid>
+
+                <!-- Maximize Button -->
+                <Grid Width="18" Height="18" Cursor="Hand" MouseLeftButtonDown="MaximizeButton_Click">
+                    <Ellipse Fill="#00CA4E" />
+                    <TextBlock Text="☐" FontWeight="ExtraBold" FontSize="12" Foreground="Black"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Grid.ToolTip>
+                        <ToolTip Content="Maximise" Placement="Top" />
+                    </Grid.ToolTip>
+                </Grid>
+                </StackPanel>
+        </Grid>
+    </Border>
+    
+    
+</Window>

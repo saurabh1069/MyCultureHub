@@ -27,6 +27,13 @@ namespace MyCultureHub
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Open the animated prompt window
+            AnimatedPromptWindow promptWindow = new AnimatedPromptWindow();
+            promptWindow.ShowDialog(); // Show the window as a modal dialog
+        }
+
         private void MainStackPanel_Click(object sender, RoutedEventArgs e)
         {
             // Here you can define what happens when the first StackPanel is clicked
